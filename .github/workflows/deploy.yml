@@ -1,0 +1,41 @@
+name: Build and Deploy to AKS
+
+on:
+  push:
+    branches: [ main ]
+
+env:
+  AZURE_CONTAINER_REGISTRY: railwayacr
+  CLUSTER_NAME: railway-aks
+  CLUSTER_RESOURCE_GROUP: railway-booking-rg
+  NAMESPACE: railway-system
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Run tests
+      run: npm test
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build-and-test
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Deploy message
+      run: echo "Deployment would happen here with proper Azure credentials"

@@ -5,175 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Railway Ticket Booking System</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            padding: 20px;
-        }
-
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        header {
-            background: rgba(255, 255, 255, 0.95);
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            text-align: center;
-            margin-bottom: 2rem;
-        }
-
-        header h1 {
-            color: #2c3e50;
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-        }
-
-        header p {
-            color: #7f8c8d;
-            font-size: 1.1rem;
-        }
-
-        .booking-form {
-            background: white;
-            padding: 2.5rem;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-            color: #2c3e50;
-        }
-
-        input, select {
-            width: 100%;
-            padding: 12px 15px;
-            border: 2px solid #e1e8ed;
-            border-radius: 8px;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-        }
-
-        input:focus, select:focus {
-            border-color: #3498db;
-            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
-            outline: none;
-        }
-
-        .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-        }
-
-        button {
-            background: linear-gradient(135deg, #3498db, #2980b9);
-            color: white;
-            padding: 15px 30px;
-            border: none;
-            border-radius: 8px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            width: 100%;
-            margin-top: 1rem;
-        }
-
-        button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
-        }
-
-        .booking-summary {
-            background: #f8f9fa;
-            padding: 1.5rem;
-            border-radius: 10px;
-            margin-top: 2rem;
-            border-left: 4px solid #3498db;
-        }
-
-        .summary-item {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 0.5rem;
-            padding: 0.5rem 0;
-            border-bottom: 1px solid #e1e8ed;
-        }
-
-        .summary-item:last-child {
-            border-bottom: none;
-            font-weight: bold;
-            font-size: 1.1rem;
-            color: #2c3e50;
-        }
-
-        .auth-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            margin-top: 1.5rem;
-        }
-
-        .auth-btn {
-            padding: 10px 20px;
-            border: 2px solid #3498db;
-            border-radius: 25px;
-            background: transparent;
-            color: #3498db;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            width: auto;
-        }
-
-        .auth-btn.signup {
-            background: #3498db;
-            color: white;
-        }
-
-        .auth-btn:hover {
-            transform: translateY(-2px);
-        }
-
-        footer {
-            text-align: center;
-            margin-top: 2rem;
-            color: white;
-            opacity: 0.8;
-        }
-
-        @media (max-width: 768px) {
-            .form-row {
-                grid-template-columns: 1fr;
-            }
-            
-            header h1 {
-                font-size: 2rem;
-            }
-            
-            .booking-form {
-                padding: 1.5rem;
-            }
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; padding: 20px; }
+        .container { max-width: 800px; margin: 0 auto; }
+        header { background: rgba(255, 255, 255, 0.95); padding: 2rem; border-radius: 15px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); text-align: center; margin-bottom: 2rem; }
+        header h1 { color: #2c3e50; font-size: 2.5rem; margin-bottom: 0.5rem; }
+        header p { color: #7f8c8d; font-size: 1.1rem; }
+        .booking-form { background: white; padding: 2.5rem; border-radius: 15px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); }
+        .form-group { margin-bottom: 1.5rem; }
+        label { display: block; margin-bottom: 0.5rem; font-weight: 600; color: #2c3e50; }
+        input, select { width: 100%; padding: 12px 15px; border: 2px solid #e1e8ed; border-radius: 8px; font-size: 1rem; transition: all 0.3s ease; }
+        input:focus, select:focus { border-color: #3498db; box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1); outline: none; }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+        button { background: linear-gradient(135deg, #3498db, #2980b9); color: white; padding: 15px 30px; border: none; border-radius: 8px; font-size: 1.1rem; font-weight: 600; cursor: pointer; transition: all 0.3s ease; width: 100%; margin-top: 1rem; }
+        button:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4); }
+        .booking-summary { background: #f8f9fa; padding: 1.5rem; border-radius: 10px; margin-top: 2rem; border-left: 4px solid #3498db; }
+        .summary-item { display: flex; justify-content: space-between; margin-bottom: 0.5rem; padding: 0.5rem 0; border-bottom: 1px solid #e1e8ed; }
+        .summary-item:last-child { border-bottom: none; font-weight: bold; font-size: 1.1rem; color: #2c3e50; }
+        .auth-buttons { display: flex; gap: 1rem; justify-content: center; margin-top: 1.5rem; }
+        .auth-btn { padding: 10px 20px; border: 2px solid #3498db; border-radius: 25px; background: transparent; color: #3498db; font-weight: 600; cursor: pointer; transition: all 0.3s ease; width: auto; }
+        .auth-btn.signup { background: #3498db; color: white; }
+        .auth-btn:hover { transform: translateY(-2px); }
+        footer { text-align: center; margin-top: 2rem; color: white; opacity: 0.8; }
+        @media (max-width: 768px) { .form-row { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
@@ -311,7 +165,6 @@
         document.getElementById('bookingForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // Get form values
             const fromStation = document.getElementById('fromStation').value;
             const toStation = document.getElementById('toStation').value;
             const journeyDate = document.getElementById('journeyDate').value;
@@ -319,29 +172,15 @@
             const trainClass = document.getElementById('trainClass').value;
             const trainType = document.getElementById('trainType').value;
 
-            // Validate stations are different
             if (fromStation === toStation) {
                 alert('Please select different departure and destination stations.');
                 return;
             }
 
-            // Calculate fare (simple calculation)
+            // Calculate fare
             const baseFare = 500;
-            const classMultiplier = {
-                'general': 1,
-                'sleeper': 1.5,
-                'ac3': 2,
-                'ac2': 3,
-                'ac1': 4
-            };
-            const typeMultiplier = {
-                'express': 1,
-                'superfast': 1.2,
-                'rajdhani': 1.5,
-                'shatabdi': 1.8,
-                'duronto': 1.3
-            };
-
+            const classMultiplier = { 'general': 1, 'sleeper': 1.5, 'ac3': 2, 'ac2': 3, 'ac1': 4 };
+            const typeMultiplier = { 'express': 1, 'superfast': 1.2, 'rajdhani': 1.5, 'shatabdi': 1.8, 'duronto': 1.3 };
             const fare = baseFare * classMultiplier[trainClass] * typeMultiplier[trainType] * parseInt(passengers);
 
             // Update booking summary
@@ -353,19 +192,10 @@
             document.getElementById('summaryTrainType').textContent = document.getElementById('trainType').options[document.getElementById('trainType').selectedIndex].text;
             document.getElementById('summaryFare').textContent = '₹' + fare.toFixed(2);
 
-            // Show booking summary
             document.getElementById('bookingSummary').style.display = 'block';
-
-            // Show success message
-            alert('Ticket booked successfully!\n\nYour booking has been confirmed. PNR number: ' + generatePNR());
+            alert('Ticket booked successfully!\n\nYour booking has been confirmed. PNR number: ' + Math.random().toString(36).substr(2, 9).toUpperCase());
         });
 
-        // Generate random PNR number
-        function generatePNR() {
-            return Math.random().toString(36).substr(2, 9).toUpperCase();
-        }
-
-        // Simple login/signup functions
         function showLogin() {
             const email = prompt('Enter your email:');
             const password = prompt('Enter your password:');
@@ -382,19 +212,6 @@
                 alert('Account created successfully! Welcome to Railway Booking System.');
             }
         }
-
-        // Auto-fill form with sample data for testing
-        function fillSampleData() {
-            document.getElementById('fromStation').value = 'delhi';
-            document.getElementById('toStation').value = 'mumbai';
-            document.getElementById('journeyDate').value = today;
-            document.getElementById('passengers').value = '2';
-            document.getElementById('trainClass').value = 'ac3';
-            document.getElementById('trainType').value = 'rajdhani';
-        }
-
-        // Uncomment the line below to enable auto-fill for testing
-        // fillSampleData();
     </script>
 </body>
 </html>
