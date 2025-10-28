@@ -1,17 +1,8 @@
+
 const express = require('express');
 const path = require('path');
 const app = express();
 const port = process.env.PORT || 3000;
-
-
-app.get('/health', (req, res) => {
-  res.status(200).json({ 
-    status: 'healthy',
-    service: 'railway-booking-system',
-    timestamp: new Date().toISOString()
-  });
-});
-
 
 // Middleware
 app.use(express.static(__dirname));
@@ -24,7 +15,11 @@ app.get('/', (req, res) => {
 
 // Health check endpoint
 app.get('/health', (req, res) => {
-    res.status(200).json({ status: 'OK', message: 'Railway Booking System is running' });
+    res.status(200).json({ 
+        status: 'OK', 
+        message: 'Railway Booking System is running',
+        timestamp: new Date().toISOString()
+    });
 });
 
 // API routes
@@ -39,14 +34,15 @@ app.get('/api/trains', (req, res) => {
 
 app.post('/api/bookings', (req, res) => {
     const booking = req.body;
-    // Simulate booking processing
     booking.id = Date.now();
     booking.status = 'Confirmed';
     booking.pnr = Math.random().toString(36).substr(2, 9).toUpperCase();
     res.json(booking);
 });
 
-app.listen(port, () => {
-    console.log(`Railway Booking System running on port ${port}`);
-    console.log(`Access the application at: http://localhost:${port}`);
+// CRITICAL FIX: Bind to 0.0.0.0 instead of localhost
+app.listen(port, '0.0.0.0', () => {
+    console.log('✅ Railway Booking System running on port ' + port);
+    console.log('🌐 Access the application at: http://0.0.0.0:' + port);
+    console.log('🚀 Application is Kubernetes-ready!');
 });
