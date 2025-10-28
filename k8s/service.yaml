@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: railway-booking-service
+  namespace: railway-system
+spec:
+  selector:
+    app: railway-booking-app
+  ports:
+  - port: 80
+    targetPort: 3000
+  type: LoadBalancer
