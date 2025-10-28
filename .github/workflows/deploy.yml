@@ -1,3 +1,5 @@
+# Save your YAML code to the file
+
 name: Build and Deploy to AKS
 
 on:
@@ -42,21 +44,21 @@ jobs:
     - name: Log in to Azure Container Registry
       uses: azure/docker-login@v1
       with:
-        login-server: ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io
-        username: ${{ secrets.ACR_USERNAME }}
-        password: ${{ secrets.ACR_PASSWORD }}
+        login-server: \${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io
+        username: \${{ secrets.ACR_USERNAME }}
+        password: \${{ secrets.ACR_PASSWORD }}
 
     - name: Build Docker image
-      run: docker build -t ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/${{ env.CONTAINER_NAME }}:${{ github.sha }} .
+      run: docker build -t \${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/\${{ env.CONTAINER_NAME }}:\${{ github.sha }} .
 
     - name: Push Docker image with SHA tag
-      run: docker push ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/${{ env.CONTAINER_NAME }}:${{ github.sha }}
+      run: docker push \${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/\${{ env.CONTAINER_NAME }}:\${{ github.sha }}
 
     - name: Tag as latest
-      run: docker tag ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/${{ env.CONTAINER_NAME }}:${{ github.sha }} ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/${{ env.CONTAINER_NAME }}:latest
+      run: docker tag \${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/\${{ env.CONTAINER_NAME }}:\${{ github.sha }} \${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/\${{ env.CONTAINER_NAME }}:latest
 
     - name: Push latest tag
-      run: docker push ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/${{ env.CONTAINER_NAME }}:latest
+      run: docker push \${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/\${{ env.CONTAINER_NAME }}:latest
 
   deploy-to-aks:
     runs-on: ubuntu-latest
@@ -70,24 +72,24 @@ jobs:
     - name: Log in to Azure
       uses: azure/login@v1
       with:
-        creds: ${{ secrets.AZURE_CREDENTIALS }}
+        creds: \${{ secrets.AZURE_CREDENTIALS }}
 
     - name: Set AKS context
       run: |
         az aks get-credentials \
-          --resource-group ${{ env.CLUSTER_RESOURCE_GROUP }} \
-          --name ${{ env.CLUSTER_NAME }} \
+          --resource-group \${{ env.CLUSTER_RESOURCE_GROUP }} \
+          --name \${{ env.CLUSTER_NAME }} \
           --overwrite-existing
 
     - name: Create namespace if not exists
       run: |
-        kubectl create namespace ${{ env.NAMESPACE }} --dry-run=client -o yaml | kubectl apply -f -
+        kubectl create namespace \${{ env.NAMESPACE }} --dry-run=client -o yaml | kubectl apply -f -
 
     - name: Deploy application
       run: |
-        kubectl apply -f k8s/ -n ${{ env.NAMESPACE }}
+        kubectl apply -f k8s/ -n \${{ env.NAMESPACE }}
 
     - name: Verify deployment
       run: |
-        kubectl rollout status deployment/${{ env.CONTAINER_NAME }} -n ${{ env.NAMESPACE }}
-        kubectl get pods,svc -n ${{ env.NAMESPACE }}
+        kubectl rollout status deployment/\${{ env.CONTAINER_NAME }} -n \${{ env.NAMESPACE }}
+        kubectl get pods,svc -n \${{ env.NAMESPACE }}
