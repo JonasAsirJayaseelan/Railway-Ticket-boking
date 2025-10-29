@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Railway Ticket Booking</title>
+    <title>🚆 Railway Ticket Booking System | Book Train Tickets Online | AKS Deployment</title>
+    <meta name="description" content="Book railway tickets online with ease. Fast, secure, and reliable train ticket booking system deployed on Azure Kubernetes Service.">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%); min-height: 100vh; padding: 20px; }
@@ -11,6 +12,8 @@
         header { background: rgba(255, 255, 255, 0.95); padding: 2rem; border-radius: 15px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); text-align: center; margin-bottom: 2rem; }
         header h1 { color: #2c3e50; font-size: 2.5rem; margin-bottom: 0.5rem; }
         header p { color: #7f8c8d; font-size: 1.1rem; }
+        .deployment-status { background: #e8f5e8; border: 2px solid #4CAF50; border-radius: 10px; padding: 1rem; margin: 1rem 0; text-align: center; }
+        .deployment-status h3 { color: #2e7d32; margin-bottom: 0.5rem; }
         .booking-form { background: white; padding: 2.5rem; border-radius: 15px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); }
         .form-group { margin-bottom: 1.5rem; }
         label { display: block; margin-bottom: 0.5rem; font-weight: 600; color: #2c3e50; }
@@ -27,15 +30,42 @@
         .auth-btn.signup { background: #3498db; color: white; }
         .auth-btn:hover { transform: translateY(-2px); }
         footer { text-align: center; margin-top: 2rem; color: white; opacity: 0.8; }
+        .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin: 2rem 0; }
+        .feature-card { background: rgba(255, 255, 255, 0.9); padding: 1rem; border-radius: 10px; text-align: center; }
         @media (max-width: 768px) { .form-row { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>🚆 Railway Ticket Booking</h1>
-            <p>✅ CI/CD Pipeline Verified - Automated Deployment Working!</p>
+            <h1>🚆 Railway Ticket Booking System</h1>
+            <p>✅ Enterprise-Grade Booking Platform | Powered by Azure Kubernetes Service</p>
+            
+            <div class="deployment-status">
+                <h3>🚀 Deployment Status: LIVE</h3>
+                <p>✅ CI/CD Pipeline Active | ✅ AKS Cluster Running | ✅ Load Balancer Configured</p>
+                <p><strong>Public IP:</strong> 48.192.80.160 | <strong>Port:</strong> 30329</p>
+            </div>
         </header>
+
+        <div class="features">
+            <div class="feature-card">
+                <h3>⚡ Fast Booking</h3>
+                <p>Instant ticket confirmation</p>
+            </div>
+            <div class="feature-card">
+                <h3>🔒 Secure Payments</h3>
+                <p>Encrypted transactions</p>
+            </div>
+            <div class="feature-card">
+                <h3>☁️ Cloud Native</h3>
+                <p>Deployed on Azure AKS</p>
+            </div>
+            <div class="feature-card">
+                <h3>🔄 Auto-Scaling</h3>
+                <p>High availability guaranteed</p>
+            </div>
+        </div>
 
         <div class="booking-form">
             <h2 style="color: #2c3e50; margin-bottom: 1.5rem; text-align: center;">Book Your Journey</h2>
@@ -152,7 +182,8 @@
         </div>
 
         <footer>
-            <p>&copy; 2024 Railway Ticket Booking System. All rights reserved. | 🚀 Deployed via CI/CD</p>
+            <p>&copy; 2024 Railway Ticket Booking System. All rights reserved. | 🚀 Deployed via Azure AKS CI/CD Pipeline</p>
+            <p>🔗 Access URL: http://48.192.80.160:30329</p>
         </footer>
     </div>
 
